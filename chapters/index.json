@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "series": "THE LAST CHANCE — Tra Cielo e Abisso",
+  "chapters": [
+    {
+      "number": 1,
+      "id": "CAP01",
+      "title": "",
+      "status": "pending_publication",
+      "href": "chapters/CAP01/index.html"
+    },
+    {
+      "number": 2,
+      "id": "CAP02",
+      "title": "",
+      "status": "pending_publication",
+      "href": "chapters/CAP02/index.html"
+    },
+    {
+      "number": 3,
+      "id": "CAP03",
+      "title": "",
+      "status": "pending_publication",
+      "href": "chapters/CAP03/index.html"
+    },
+    {
+      "number": 4,
+      "id": "CAP04",
+      "title": "",
+      "status": "in_production",
+      "href": "chapters/CAP04/index.html"
+    }
+  ]
+}
