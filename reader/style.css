@@ -16,3 +16,54 @@ html,body.book{width:100%;height:100%;overflow:hidden}.book-track{display:flex;w
 .prose-page::before{content:"";position:absolute;z-index:0;inset:-5% -12%;background:url("/The-Last-Chance-READER/assets/REGNO_CELESTE_SIGILLO_V1_DEFINITIVO.png?v=1") center/cover no-repeat;opacity:.06;filter:grayscale(1) sepia(.18);pointer-events:none}
 .prose-page .prose,.prose-page .date{position:relative;z-index:1}
 @media(max-width:600px){.prose-page::before{inset:-4% -28%;background-size:cover;opacity:.06}}
+
+
+/* ===== PUBLIC READER HOME — Celestial edition ===== */
+.reader-home{margin:0;min-height:100%;overflow-x:hidden;background:#070a10;color:#f3ead6;font-family:Georgia,"Times New Roman",serif}
+.reader-home::before{content:"";position:fixed;inset:0;z-index:-3;background:radial-gradient(circle at 50% 12%,rgba(83,108,139,.28),transparent 38%),linear-gradient(180deg,#101722 0%,#070a10 55%,#030507 100%)}
+.home-shell{width:100%;margin:0}
+.home-hero{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:max(32px,env(safe-area-inset-top)) 22px max(42px,env(safe-area-inset-bottom));isolation:isolate;overflow:hidden}
+.home-hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(3,5,8,.88),transparent 25%,transparent 75%,rgba(3,5,8,.88)),linear-gradient(180deg,transparent 55%,#070a10 100%);pointer-events:none}
+.home-sigil{position:absolute;z-index:-2;width:min(1120px,110vw);aspect-ratio:1;left:50%;top:46%;transform:translate(-50%,-50%);background:url("/The-Last-Chance-READER/assets/REGNO_CELESTE_SIGILLO_V1_DEFINITIVO.png") center/contain no-repeat;opacity:.12;filter:saturate(.72) brightness(.75);pointer-events:none}
+.cover-frame{position:relative;width:min(54vw,410px);max-height:68svh;display:flex;align-items:center;justify-content:center;padding:8px}
+.cover-frame::before,.cover-frame::after{content:"";position:absolute;inset:0;border:1px solid rgba(214,181,108,.42);clip-path:polygon(0 0,38% 0,38% 1px,62% 1px,62% 0,100% 0,100% 100%,62% 100%,62% calc(100% - 1px),38% calc(100% - 1px),38% 100%,0 100%)}
+.cover-frame::after{inset:-5px;border-color:rgba(236,216,165,.16)}
+.volume-cover{display:block;max-width:100%;max-height:65svh;width:auto;height:auto;box-shadow:0 28px 70px rgba(0,0,0,.62),0 0 45px rgba(185,155,91,.10)}
+.home-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:28px}
+.celestial-button{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:14px;min-width:238px;padding:15px 24px;color:#f5e9c9;text-decoration:none;font:600 12px/1 system-ui,-apple-system,sans-serif;letter-spacing:.18em;border:1px solid rgba(218,186,113,.62);background:linear-gradient(180deg,rgba(38,42,47,.92),rgba(12,15,20,.96));box-shadow:inset 0 0 0 1px rgba(255,255,255,.04),0 8px 28px rgba(0,0,0,.34);clip-path:polygon(12px 0,calc(100% - 12px) 0,100% 50%,calc(100% - 12px) 100%,12px 100%,0 50%);transition:transform .18s ease,filter .18s ease,border-color .18s ease}
+.celestial-button::before{content:"";position:absolute;left:50%;top:-5px;transform:translateX(-50%) rotate(45deg);width:8px;height:8px;border:1px solid rgba(226,197,127,.8);background:#151920}
+.celestial-button:hover,.celestial-button:focus-visible{transform:translateY(-2px);filter:brightness(1.16);border-color:#e1c37d;outline:none}
+.primary-home{background:linear-gradient(180deg,rgba(86,69,36,.92),rgba(25,22,17,.98))}
+.button-wing{width:26px;height:8px;opacity:.7;border-top:1px solid #d8bb79;position:relative}
+.button-wing::after{content:"";position:absolute;width:17px;border-top:1px solid #d8bb79;top:4px}
+.button-wing.left{transform:skewY(-10deg)}.button-wing.left::after{right:0}
+.button-wing.right{transform:skewY(10deg)}.button-wing.right::after{left:0}
+.scroll-mark{position:absolute;bottom:max(14px,env(safe-area-inset-bottom));width:28px;height:28px;transform:rotate(45deg);border-right:1px solid rgba(224,197,135,.38);border-bottom:1px solid rgba(224,197,135,.38)}
+.home-index{position:relative;min-height:72svh;padding:76px max(20px,calc((100vw - 880px)/2)) 110px;background:linear-gradient(180deg,#070a10,#0b0f15);text-align:center;overflow:hidden}
+.home-index::before{content:"";position:absolute;inset:0;background:url("/The-Last-Chance-READER/assets/REGNO_CELESTE_SIGILLO_V1_DEFINITIVO.png") 50% 56%/min(920px,115vw) auto no-repeat;opacity:.035;filter:grayscale(1);pointer-events:none}
+.index-heading{position:relative;display:flex;align-items:center;justify-content:center;gap:18px;margin:auto auto 22px;max-width:480px}
+.index-heading img{width:54px;height:54px;object-fit:cover;border-radius:50%;filter:grayscale(.35) sepia(.25);opacity:.78}
+.ornament-line{height:1px;flex:1;background:linear-gradient(90deg,transparent,rgba(211,179,108,.6))}
+.ornament-line:last-child{transform:scaleX(-1)}
+.index-kicker{position:relative;margin:0 0 8px;color:#b8a276;font:600 11px/1 system-ui;letter-spacing:.32em}
+.home-index h1{position:relative;margin:0 0 38px;font-size:clamp(2.2rem,6vw,4rem);font-weight:400;letter-spacing:.06em;color:#f0e5cc}
+.celestial-list{position:relative;display:grid;gap:12px;text-align:left}
+.celestial-list .chapter{position:relative;display:grid;grid-template-columns:170px 1fr auto;align-items:center;gap:20px;min-height:72px;padding:17px 24px;border:1px solid rgba(190,161,98,.28);background:linear-gradient(90deg,rgba(32,36,43,.82),rgba(13,17,23,.76));color:#eee2c9;text-decoration:none;clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);transition:transform .18s ease,border-color .18s ease,background .18s ease}
+.celestial-list .chapter::before{content:"✦";color:#b99a59;font-size:10px;position:absolute;right:18px;opacity:.65}
+.celestial-list a.chapter:hover,.celestial-list a.chapter:focus-visible{transform:translateX(4px);border-color:rgba(224,192,119,.72);background:linear-gradient(90deg,rgba(58,52,38,.86),rgba(16,20,26,.82));outline:none}
+.celestial-list .chapter span:first-child{color:#c8ac6d;font:600 11px/1.3 system-ui;letter-spacing:.16em}
+.celestial-list .chapter span:nth-child(2){font-size:clamp(1.05rem,2.2vw,1.28rem);letter-spacing:.025em}
+.celestial-list .chapter .chapter-state{padding-right:20px;color:#857d6c;font:600 9px/1 system-ui;letter-spacing:.13em;text-transform:uppercase}
+.celestial-list .chapter.locked{opacity:.42;cursor:default}
+@media(max-width:650px){
+ .home-hero{justify-content:center;padding-left:18px;padding-right:18px}
+ .home-sigil{width:155vw;top:44%;opacity:.105}
+ .cover-frame{width:min(76vw,360px);max-height:61svh}
+ .volume-cover{max-height:58svh}
+ .home-actions{width:100%;margin-top:24px}
+ .celestial-button{width:min(100%,330px);min-width:0}
+ .home-index{padding-top:62px}
+ .celestial-list .chapter{grid-template-columns:1fr auto;gap:7px 12px;padding:16px 18px}
+ .celestial-list .chapter span:nth-child(2){grid-column:1/2}
+ .celestial-list .chapter .chapter-state{grid-column:2;grid-row:1/3;align-self:center;padding-right:14px}
+}
