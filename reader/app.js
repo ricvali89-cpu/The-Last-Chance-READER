@@ -15,3 +15,5 @@ fetch("chapters/index.json").then(r=>r.json()).then(data=>{
 const bookmark=localStorage.getItem(KEY);
 const resume=document.querySelector("#resume");
 if(bookmark&&resume){resume.hidden=false;}
+
+// deployment marker: home2
