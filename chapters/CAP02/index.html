@@ -18,18 +18,22 @@ function paginate(){
  let page=makePage();
  const newPage=()=>page=makePage();
  const placeArt=item=>{
+   // Never shrink an illustration to fill a text-page remainder.
+   // If the remaining space cannot show it at a useful editorial size,
+   // keep filling with subsequent prose and insert the art on the next suitable page.
+   const MIN_ART=Math.round(innerHeight*.34), IDEAL_ART=Math.round(innerHeight*.46);
    const art=nodeFor(item);
    page.d.appendChild(art);
-   // Keep the illustration at its exact narrative anchor and use the remaining
-   // page height instead of abandoning a large blank area before it.
-   const available=page.d.clientHeight-(page.d.scrollHeight-art.offsetHeight)-10;
-   if(available>0){
-     art.style.height=Math.min(Math.round(innerHeight*.46),available)+"px";
+   const before=page.d.scrollHeight-art.offsetHeight;
+   const available=page.d.clientHeight-before-10;
+   if(available>=MIN_ART){
+     art.style.height=Math.min(IDEAL_ART,available)+"px";
+     return;
    }
-   if(!fits(page.d)){
-     art.remove();newPage();page.d.appendChild(art);
-     art.style.height="46dvh";
-   }
+   art.remove();
+   newPage();
+   page.d.appendChild(art);
+   art.style.height=IDEAL_ART+"px";
  };
  for(const item of buildItems()){
    if(item.type==="art"){placeArt(item);continue}
@@ -37,8 +41,7 @@ function paginate(){
    while(pos<words.length){
      let lo=1,hi=words.length-pos,best=0,test=null;
      while(lo<=hi){
-       const mid=(lo+hi)>>1;
-       if(test)test.remove();
+       const mid=(lo+hi)>>1;if(test)test.remove();
        test=appendParagraphPiece(page,item,words.slice(pos,pos+mid).join(" "),continuation);
        if(fits(page.d)){best=mid;lo=mid+1}else hi=mid-1;
      }
