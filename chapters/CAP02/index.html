@@ -15,28 +15,29 @@ function appendParagraphPiece(page,item,text,isContinuation=false){
 }
 function paginate(){
  [...track.querySelectorAll(".reading-page,.end")].forEach(x=>x.remove());
- let page=makePage();
- const newPage=()=>page=makePage();
- const placeArt=item=>{
-   // Never shrink an illustration to fill a text-page remainder.
-   // If the remaining space cannot show it at a useful editorial size,
-   // keep filling with subsequent prose and insert the art on the next suitable page.
-   const MIN_ART=Math.round(innerHeight*.34), IDEAL_ART=Math.round(innerHeight*.46);
-   const art=nodeFor(item);
-   page.d.appendChild(art);
-   const before=page.d.scrollHeight-art.offsetHeight;
-   const available=page.d.clientHeight-before-10;
-   if(available>=MIN_ART){
-     art.style.height=Math.min(IDEAL_ART,available)+"px";
-     return;
+ let page=makePage(),pendingArt=null;
+ const newPage=()=>{
+   page=makePage();
+   if(pendingArt){
+     const art=nodeFor(pendingArt);
+     art.style.height="50dvh";
+     page.d.appendChild(art);
+     pendingArt=null;
    }
-   art.remove();
-   newPage();
-   page.d.appendChild(art);
-   art.style.height=IDEAL_ART+"px";
  };
  for(const item of buildItems()){
-   if(item.type==="art"){placeArt(item);continue}
+   if(item.type==="art"){
+     const art=nodeFor(item);
+     art.style.height="50dvh";
+     page.d.appendChild(art);
+     if(!fits(page.d)){
+       art.remove();
+       pendingArt=item;
+       // Do NOT open a new page here: keep filling this page with prose.
+       // The deferred art is inserted only when the prose naturally fills it.
+     }
+     continue;
+   }
    const words=item.text.split(/\s+/);let pos=0,continuation=false;
    while(pos<words.length){
      let lo=1,hi=words.length-pos,best=0,test=null;
@@ -52,6 +53,7 @@ function paginate(){
      if(pos<words.length)newPage();
    }
  }
+ if(pendingArt)newPage();
  const end=document.createElement("section");end.className="book-page end";end.innerHTML="<div><h2>Fine del Capitolo II</h2><p>THE LAST CHANCE</p></div>";track.appendChild(end);update()
 }
 const prevBtn=document.getElementById("prev"),nextBtn=document.getElementById("next"),bookmarkBtn=document.getElementById("bookmark");
