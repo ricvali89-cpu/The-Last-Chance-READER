@@ -62,4 +62,6 @@ let resizeTimer;addEventListener("resize",()=>{clearTimeout(resizeTimer);resizeT
 function boot(){try{paginate()}catch(e){console.error("CAP02 pagination error",e);paginateFallback()}show()}
 function paginateFallback(){[...track.querySelectorAll(".reading-page,.end")].forEach(x=>x.remove());let page=makePage(),count=0;for(const item of buildItems()){const n=nodeFor(item);page.d.appendChild(n);count++;if(count>=5){page=makePage();count=0}}const end=document.createElement("section");end.className="book-page end";end.innerHTML="<div><h2>Fine del Capitolo II</h2><p>THE LAST CHANCE</p></div>";track.appendChild(end);update()}
 if(document.fonts&&document.fonts.ready){document.fonts.ready.then(boot).catch(boot);setTimeout(()=>{if(pages().length===1)boot()},500)}else boot();
+</script><script>
+if("serviceWorker" in navigator){addEventListener("load",()=>navigator.serviceWorker.register("/The-Last-Chance-READER/sw.js",{scope:"/The-Last-Chance-READER/",updateViaCache:"none"}).then(r=>r.update()).catch(()=>{}));}
 </script></body></html>
