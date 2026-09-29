@@ -18,11 +18,20 @@ function paginate(){[...track.querySelectorAll(".reading-page,.end")].forEach(x=
  for(let idx=0;idx<items.length;idx++){
   const item=items[idx];
   if(item.type==="art"){
-   // Do not reserve blank space on the current page just to keep the image beside its trigger.
-   // If the page already contains prose, start the illustration on the next page.
-   if(page.d.textContent.trim().length>0)page=makePage();
-   const n=nodeFor(item);page.d.appendChild(n);
-   if(!fits(page.d)){n.style.height="42dvh"}
+   // First try the illustration in the remaining space of the current page.
+   // Keep it there only if it fits at a useful size; otherwise move it intact to the next page.
+   let n=nodeFor(item);page.d.appendChild(n);
+   if(!fits(page.d)){
+    page.d.removeChild(n);
+    const remaining=Math.max(0,page.d.clientHeight-page.d.scrollHeight);
+    const minUseful=Math.min(page.d.clientHeight*.34,320);
+    if(remaining>=minUseful){
+      n=nodeFor(item);n.style.height=Math.min(remaining,page.d.clientHeight*.50)+"px";page.d.appendChild(n);
+      if(!fits(page.d)){page.d.removeChild(n);page=makePage();n=nodeFor(item);page.d.appendChild(n)}
+    }else{
+      page=makePage();n=nodeFor(item);page.d.appendChild(n);
+    }
+   }
    continue;
   }
   let full=nodeFor(item);page.d.appendChild(full);
