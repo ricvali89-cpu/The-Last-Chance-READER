@@ -18,11 +18,18 @@ function paginate(){
  let page=makePage();
  const newPage=()=>page=makePage();
  const placeArt=item=>{
-   // Canonical novel rule: illustrations never force preceding prose to leave dead space.
-   // They start on a fresh page and prose resumes immediately below them when space allows.
-   if(page.d.children.length)newPage();
-   const art=nodeFor(item);page.d.appendChild(art);
-   if(!fits(page.d)){art.style.height="42dvh"}
+   const art=nodeFor(item);
+   page.d.appendChild(art);
+   // Keep the illustration at its exact narrative anchor and use the remaining
+   // page height instead of abandoning a large blank area before it.
+   const available=page.d.clientHeight-(page.d.scrollHeight-art.offsetHeight)-10;
+   if(available>0){
+     art.style.height=Math.min(Math.round(innerHeight*.46),available)+"px";
+   }
+   if(!fits(page.d)){
+     art.remove();newPage();page.d.appendChild(art);
+     art.style.height="46dvh";
+   }
  };
  for(const item of buildItems()){
    if(item.type==="art"){placeArt(item);continue}
