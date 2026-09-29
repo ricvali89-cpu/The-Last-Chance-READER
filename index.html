@@ -9,4 +9,6 @@
 </nav><div class="hint">Tocca un capitolo per iniziare</div></div></section>
 </main><div class="controls" id="controls"><button id="prev" aria-label="Pagina precedente">‹</button><span id="counter">1 / 2</span><button id="next" aria-label="Pagina successiva">›</button></div><script>
 const track=document.getElementById("track"),controls=document.getElementById("controls"),counter=document.getElementById("counter");let current=0,hideTimer,scrollTimer;function show(){controls.classList.remove("hidden");clearTimeout(hideTimer);hideTimer=setTimeout(()=>controls.classList.add("hidden"),1600)}function go(n){current=Math.max(0,Math.min(1,n));track.scrollTo({left:current*innerWidth,behavior:"smooth"});counter.textContent=(current+1)+" / 2";show()}document.getElementById("prev").onclick=()=>go(current-1);document.getElementById("next").onclick=()=>go(current+1);track.addEventListener("scroll",()=>{show();clearTimeout(scrollTimer);scrollTimer=setTimeout(()=>{current=Math.round(track.scrollLeft/innerWidth);counter.textContent=(current+1)+" / 2"},80)});track.addEventListener("pointerdown",show);show();
+</script><script>
+if("serviceWorker" in navigator){addEventListener("load",()=>navigator.serviceWorker.register("/The-Last-Chance-READER/sw.js",{scope:"/The-Last-Chance-READER/",updateViaCache:"none"}).then(r=>r.update()).catch(()=>{}));}
 </script></body></html>
