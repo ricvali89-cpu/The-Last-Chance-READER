@@ -1,41 +1,12 @@
 <!doctype html>
-<html lang="it">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#070a10">
-<title>The Last Chance — Tra Cielo e Abisso</title>
-<link rel="stylesheet" href="reader/style.css?v=20260928-home3">
-</head>
-<body class="reader-home">
-<main class="home-shell">
-  <section class="home-hero" aria-label="The Last Chance — Tra Cielo e Abisso">
-    <div class="home-sigil" aria-hidden="true"></div>
-    <div class="cover-frame">
-      <img class="volume-cover" src="assets/THE_LAST_CHANCE_VOLUME_1_COVER_DEFINITIVA.png" alt="Copertina di The Last Chance — Tra Cielo e Abisso">
-    </div>
-    <div class="home-actions">
-      <a class="celestial-button primary-home" href="chapters/CAP01/index.html">
-        <span class="button-wing left" aria-hidden="true"></span><span>INIZIA A LEGGERE</span><span class="button-wing right" aria-hidden="true"></span>
-      </a>
-      <a id="resume" class="celestial-button secondary-home" href="chapters/CAP01/index.html#resume" hidden>
-        <span class="button-wing left" aria-hidden="true"></span><span>CONTINUA A LEGGERE</span><span class="button-wing right" aria-hidden="true"></span>
-      </a>
-    </div>
-    <div class="scroll-mark" aria-hidden="true"><span></span></div>
-  </section>
-
-  <section class="home-index" aria-labelledby="indice-title">
-    <div class="index-heading">
-      <span class="ornament-line"></span>
-      <img src="assets/REGNO_CELESTE_SIGILLO_V1_DEFINITIVO.png" alt="" aria-hidden="true">
-      <span class="ornament-line"></span>
-    </div>
-    <p class="index-kicker">VOLUME I</p>
-    <h1 id="indice-title">Capitoli</h1>
-    <div id="chapter-list" class="chapter-list celestial-list"></div>
-  </section>
-</main>
-<script src="reader/app.js?v=20260928-home2"></script>
-</body>
-</html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f5f1e8"><title>The Last Chance — Tra Cielo e Abisso</title><style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;height:100dvh;overflow:hidden;background:#f5f1e8;color:#191816}.book{position:fixed;inset:0;display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;touch-action:pan-x pinch-zoom}.book::-webkit-scrollbar{display:none}.page{flex:0 0 100vw;width:100vw;height:100vh;height:100dvh;scroll-snap-align:start;overflow:hidden}.cover{display:flex;align-items:center;justify-content:center;background:#000;padding:max(12px,env(safe-area-inset-top)) 12px max(12px,env(safe-area-inset-bottom))}.cover img{display:block;max-width:96%;max-height:96%;object-fit:contain}.index-page{padding:max(54px,env(safe-area-inset-top)) max(28px,env(safe-area-inset-right)) max(40px,env(safe-area-inset-bottom)) max(28px,env(safe-area-inset-left));font-family:Georgia,"Times New Roman",serif;background:#f5f1e8}.index-inner{width:min(100%,680px);height:100%;margin:0 auto;display:flex;flex-direction:column;align-items:center}.volume{font-size:12px;letter-spacing:.28em;text-transform:uppercase;margin:4vh 0 8px;color:#766c5d}.index-page h1{font-size:clamp(42px,12vw,72px);font-weight:400;letter-spacing:.08em;margin:0 0 8vh}.ornament{width:min(180px,45vw);height:1px;background:#9b8d78;margin-bottom:5vh}.chapters{width:100%}.chapter{display:block;color:#191816;text-decoration:none;text-align:center;padding:22px 10px;border-bottom:1px solid #c9c0b2}.chapter:first-child{border-top:1px solid #c9c0b2}.chapter-number{display:block;font-size:12px;font-weight:700;letter-spacing:.2em;margin-bottom:8px}.chapter-title{display:block;font-size:clamp(22px,6vw,30px);font-style:italic}.hint{margin-top:auto;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#857b6d;padding-bottom:2vh}.controls{position:fixed;z-index:20;left:50%;bottom:max(8px,env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;align-items:center;gap:10px;padding:4px 8px;border-radius:999px;background:#111d;color:#fff;transition:.25s}.controls.hidden{opacity:0;pointer-events:none;transform:translate(-50%,10px)}.controls button{border:0;background:none;color:#fff;font-size:25px;padding:2px 9px}.controls span{font:12px system-ui;min-width:50px;text-align:center}
+</style></head><body><main id="track" class="book">
+<section class="page cover"><img src="assets/THE_LAST_CHANCE_VOLUME_1_COVER_DEFINITIVA.png" alt="Copertina di The Last Chance — Tra Cielo e Abisso"></section>
+<section class="page index-page"><div class="index-inner"><div class="volume">Volume I</div><h1>INDICE</h1><div class="ornament"></div><nav class="chapters" aria-label="Indice dei capitoli">
+<a class="chapter" href="chapters/CAP01/index.html"><span class="chapter-number">CAPITOLO I</span><span class="chapter-title">Il mondo che rimane</span></a>
+<a class="chapter" href="chapters/CAP02/index.html"><span class="chapter-number">CAPITOLO II</span><span class="chapter-title">Il Grande Concilio</span></a>
+</nav><div class="hint">Tocca un capitolo per iniziare</div></div></section>
+</main><div class="controls" id="controls"><button id="prev" aria-label="Pagina precedente">‹</button><span id="counter">1 / 2</span><button id="next" aria-label="Pagina successiva">›</button></div><script>
+const track=document.getElementById("track"),controls=document.getElementById("controls"),counter=document.getElementById("counter");let current=0,hideTimer,scrollTimer;function show(){controls.classList.remove("hidden");clearTimeout(hideTimer);hideTimer=setTimeout(()=>controls.classList.add("hidden"),1600)}function go(n){current=Math.max(0,Math.min(1,n));track.scrollTo({left:current*innerWidth,behavior:"smooth"});counter.textContent=(current+1)+" / 2";show()}document.getElementById("prev").onclick=()=>go(current-1);document.getElementById("next").onclick=()=>go(current+1);track.addEventListener("scroll",()=>{show();clearTimeout(scrollTimer);scrollTimer=setTimeout(()=>{current=Math.round(track.scrollLeft/innerWidth);counter.textContent=(current+1)+" / 2"},80)});track.addEventListener("pointerdown",show);show();
+</script></body></html>
