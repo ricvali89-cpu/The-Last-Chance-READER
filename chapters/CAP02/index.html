@@ -50,5 +50,5 @@ let current=0,hideTimer,scrollTimer;function pages(){return [...track.querySelec
 let resizeTimer;addEventListener("resize",()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{const ratio=current/Math.max(1,pages().length-1);paginate();current=Math.round(ratio*Math.max(0,pages().length-1));track.scrollLeft=current*innerWidth;update()},180)});
 function boot(){try{paginate()}catch(e){console.error("CAP02 pagination error",e);paginateFallback()}show()}
 function paginateFallback(){[...track.querySelectorAll(".reading-page,.end")].forEach(x=>x.remove());let page=makePage(),count=0;for(const item of buildItems()){const n=nodeFor(item);page.d.appendChild(n);count++;if(count>=5){page=makePage();count=0}}const end=document.createElement("section");end.className="book-page end";end.innerHTML="<div><h2>Fine del Capitolo II</h2><p>THE LAST CHANCE</p></div>";track.appendChild(end);update()}
-if(document.fonts&&document.fonts.ready){document.fonts.ready.then(boot).catch(boot);setTimeout(()=>{if(pages().length<=1)boot()},500)}else boot();
+boot();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{if(pages().length<=1)boot()}).catch(()=>{});setTimeout(()=>{if(pages().length<=1)boot()},700);
 </script></body></html>
