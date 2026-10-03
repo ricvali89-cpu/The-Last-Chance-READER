@@ -75,7 +75,7 @@ function paginate(){
   }
   if(pendingArt)newPage();
   const end=document.createElement("section");end.className="book-page end";
-  end.innerHTML='<div><h2>Fine del Capitolo IV</h2><nav class="chapter-nav" aria-label="Navigazione capitoli"><a href="../CAP03/index.html">← Capitolo precedente</a><a href="../../index.html">Indice</a></nav></div>';
+  end.innerHTML='<div><h2>Fine del Capitolo IV</h2><nav class="chapter-nav" aria-label="Navigazione capitoli"><a href="../CAP03/index.html">← Capitolo precedente</a><a href="../../index.html">Indice</a><a href="../CAP05/index.html">Capitolo successivo →</a></nav></div>';
   track.appendChild(end);update();
 }
 const prevBtn=document.getElementById("prev"),nextBtn=document.getElementById("next"),bookmarkBtn=document.getElementById("bookmark");
@@ -101,7 +101,7 @@ function paginateFallback(){
     if(count>=5){page=makePage();count=0}
   }
   const end=document.createElement("section");end.className="book-page end";
-  end.innerHTML='<div><h2>Fine del Capitolo IV</h2><nav class="chapter-nav" aria-label="Navigazione capitoli"><a href="../CAP03/index.html">← Capitolo precedente</a><a href="../../index.html">Indice</a></nav></div>';
+  end.innerHTML='<div><h2>Fine del Capitolo IV</h2><nav class="chapter-nav" aria-label="Navigazione capitoli"><a href="../CAP03/index.html">← Capitolo precedente</a><a href="../../index.html">Indice</a><a href="../CAP05/index.html">Capitolo successivo →</a></nav></div>';
   track.appendChild(end);update();
 }
 if(document.fonts&&document.fonts.ready){document.fonts.ready.then(boot).catch(boot);setTimeout(()=>{if(pages().length===1)boot()},500)}else boot();
